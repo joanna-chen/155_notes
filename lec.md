@@ -188,7 +188,7 @@ public class CopyFile {
 * ```FileReader``` and ```FileWriter``` are grouped under data type *file*
 
 ```java
-File file = new File(getDefaultFileDir(FOLDER_NAME));
+File file = new File(getDefaultFileDir(FOLDER_NAME), FILE_NAME);
 PrintWriter pwr = new PrintWriter(file);
 ```
 
