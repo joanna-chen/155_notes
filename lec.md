@@ -289,6 +289,20 @@ PrintWriter pwr = new PrintWriter(file);
 * watchdog timer: system deadlock prevention before TCT that could crash
   * *one-shot timer* with duration longer than estimated max process time of TCT so that if TCT completes before timer, TCT probably got stuck
   * TimerExpire event >> TimerHandler >> TCT forced to terminate in the Handler
+  
+### Example:
+```
+Timer timer = new Timer();
+TimerTask tast = new TimerTask() {
+ @Override
+ public void run() {
+  System.out.println("hello world");
+ }
+}
+
+// schedule(task, delay, period);
+timer.schedule(task, 500, 500);
+```
 
 # lec 7: android, xml, version control
 
@@ -319,6 +333,17 @@ PrintWriter pwr = new PrintWriter(file);
 * *bundle* is a key-value map
 * *onSaveInstanceState()* is a method in AppCompatActivity class
 * use ```putString(String key, String value)```
+```java
+class MainActivity ... {
+ String color;
+ 
+ @Override
+ potected void onSaveInstanceState(Bundle b) {
+  super.onSaveInstanceState(b);
+  b.putString("color", color);
+ }
+}
+```
 * to get data:
 ```java
 protected void onCreate(Bundle savedInstanceState) {
