@@ -406,3 +406,26 @@ stuff
 * ```super```: reference instance of super-class
 * ```super()```: calls constructor of super-class
 * ```this```: reference instance of the child-class
+
+## Concept Review: OOD
+### Class Comparison
+|        | Concrete Class | Abstract Class      | Interface                        |
+|:-------|:---------------|:--------------------|:---------------------------------|
+| Fields | No restriction | Public or protected | Public default, Constant default |
+| Methods| must be implemented | unimplemented are abstract | signature only |
+| Declaration | `class` | `abstract class` | `interface` |
+|Instantiability| Y | N | N |
+|Inheritance | extends | extends | implements |
+|multiple inheritance| N | N | Y |
+|other | has constructors and destructors | can contain all concrete methods; no constructor | no scpoe modifier; uniqueness modifier required|
+
+### Modifiers
+| Modifier | Interface | Class | Nested Class | Field | Method |
+|:---------|-----------|-------|--------------|-------|--------|
+| public   | Accessible from any class                         |
+| private  | Accessible only from the `this`                   |
+| protected| Accessible from within package (`this` and subclasses) |
+| none     | Accessible from any class within same package (BAD)|
+| abstract | N/A       | Contains at least one abstract method, no instantiation | N/A | implementation not defined, only signature and return type declared |
+| final    | N/A       | Cannot be subclassed | Value cannot change | Cannot be overridden |
+| static   | N/A       | N/A   | Not inner class | Exactly one instance for all objects | Exactly one instance for all objects |
