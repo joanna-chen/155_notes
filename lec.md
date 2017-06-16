@@ -208,8 +208,25 @@ PrintWriter pwr = new PrintWriter(file);
 * used by embedded hardware and software designers
 * generated from functional description of system
 * used as reference to create software/hardware version of FSM implementation
+* has following components:
+
+### structure of State Box:
+| State Name |
+| Activities ( do/ _activity_ )|
+
+### Start Point:
+* indicates initial state of FSM and prepaartion actions to set up initial state
+
+### State Transition:
+> Event [Guard] / Actions
+* Event: event that triggers state transition
+* Guard: condition that allows for state transition after event occurs
+* Action `do/ or /`: actions taken after state transition to prepare for next state
 
 *look at slides from lec5 for more UML stuff*
+
+## Superstate: Abstract encompassent of part of FSM states as one generalized state
+* simplifies complex diagrams
 
 # lec 6: polling, interrupt, timers
 
