@@ -212,6 +212,7 @@ PrintWriter pwr = new PrintWriter(file);
 
 ### structure of State Box:
 | State Name |
+| :-------: |
 | Activities ( do/ _activity_ )|
 
 ### Start Point:
