@@ -10,8 +10,10 @@
 | OOD            | OOD            |
 
 ## java 101
-| data type      | size           |
+| data type      | size/behaviour |
 | :------------- | :------------- |
+| boolean        | T/F            |
+| char           | 'a'            |
 | byte           | 8-bit          |
 | short          | 16-bit         |
 | int            | 32-bit         |
@@ -34,7 +36,13 @@ int[] numbers = new int[10];
 * computers are discrete-time and digital
   * so report discrete values at given times from the sensors
 * **analog-to-digital-converter (ADC)**: part of the codec; coverts continuous-time analog signal to discrete-time digital signal
-* **actuators**: convert output from computer system into some effect on environment
+* **actuators**: convert output from computer system into some effect on environment (Digitial to Analog Converter)
+
+### Project Management Terminology
+* Functional Requirements: "What the software should do"
+* Non-Functional Requirement: "How the software should feel like"
+* Constraints: "Without this, software projet would FAIL"
+* Specifications: "How do to do" (underlying engineering tehcnical details for requirements and constraints
 
 # lec 3
 
