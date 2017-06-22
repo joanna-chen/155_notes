@@ -435,10 +435,25 @@ stuff
 ## Testing:
 ### Testing Levels:
    1. smoke test
-    * adding code until it fails
+     * adding code until it fails
    2. integration test
-    * testing the entire thing
+     * testing the entire thing
    3. System Test
-    * testing entire system
+     * testing entire system
    4. Stress Test
-    * execute software over extended period of time with long and cyclic test plans
+     * execute software over extended period of time with long and cyclic test plans
+   5. Regression Test
+     * testing after new updates
+ 
+### unit test:
+* double click class to test and create new test.
+* additional procedure on slides
+
+```java
+class testClass {
+ @Test
+ public void computeTest() throws Exception {
+  assertEquals("Test Case: inputs", expectedOutput, otherClass.testFunction(inputs), 
+ }
+}
+```
