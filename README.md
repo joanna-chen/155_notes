@@ -429,3 +429,16 @@ stuff
 | abstract | N/A       | Contains at least one abstract method, no instantiation | N/A | implementation not defined, only signature and return type declared |
 | final    | N/A       | Cannot be subclassed | Value cannot change | Cannot be overridden |
 | static   | N/A       | N/A   | Not inner class | Exactly one instance for all objects | Exactly one instance for all objects |
+
+# Post-midterm lectures
+
+## Testing:
+### Testing Levels:
+   1. smoke test
+    * adding code until it fails
+   2. integration test
+    * testing the entire thing
+   3. System Test
+    * testing entire system
+   4. Stress Test
+    * execute software over extended period of time with long and cyclic test plans
