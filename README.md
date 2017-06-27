@@ -486,5 +486,11 @@ public class Test {
  @BeforeTest
  @AfterTest
  // static methods before run before and after entire test suite
+ 
+ // expecting exceptions
+ @Test(expected = IllegalArgumentException.class)
+ publlic void test() {
+  // do something
+ }
 }
 ```
