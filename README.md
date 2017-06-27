@@ -482,5 +482,9 @@ public class Test {
   instance.printEndMesssage();
   instance = null;
  }
+ 
+ @BeforeTest
+ @AfterTest
+ // static methods before run before and after entire test suite
 }
 ```
