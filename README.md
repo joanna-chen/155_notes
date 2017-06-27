@@ -494,3 +494,23 @@ public class Test {
  }
 }
 ```
+```java
+public clss Topic2TestSuite {
+ 
+ @Before
+ public void settingUp() {
+  Topic1Class classUnderTest = new Topic1Class();
+ }
+ 
+ @Test
+ public void normalTest() throws Exception {
+  assertEquals("<Test Name>", expectedOutput, class.functiontoTest(input1, input2), (float) levelOfAccuracy);
+ }
+ 
+ @Test (expected = IllegalArgumentException.class)
+ public void exceptionTestCases() throws Exception {
+  // does not need assertEquals since it expects an exception and will fail if the exception does not throw
+  class.functionToTest(improperInput1, improperInput2);
+ }
+}
+```
