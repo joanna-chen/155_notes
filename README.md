@@ -514,3 +514,32 @@ public clss Topic2TestSuite {
  }
 }
 ```
+
+# Multithreading and Concurrency:
+## Multithreading:
+* CPU not always executing code; when idling CPU executes *NOP* command
+  * For TCTs, leaves program waits and leaves CPU *NOP*ing for inefficient time
+### Virtual Parallel Tasking: 
+* Maximizing usage of CPU to allow max number of processes / programs to appear to run in parallel
+### Thread Scheduling:
+* Process of allocating CPU processing time to different threads. 
+### Process:
+* executable program
+* memory locations allocated or the program and its needed heap & stack
+### Thread: Sequence of Commands
+* Thread Scheduling: non-preemptive scheduling given 1 CPU core: look at slides
+* Pre-emptive scheduling example:
+  * Given Priority level 1 > 2 > 3
+  * Thread A: Periodic Task with Deadline
+  * Thread B: TCT with long wait time
+  * Thread C: Deadline at 98 ms.
+* eg. File I/O vs. LineGraphView.
+### Time Coallescing
+
+# Sequence Diagrams
+## Multithread System Analysis:
+### Timing Analysis Table:
+* eg. Instance arrangement: Instances on the left invoke instances on the right.
+  * dotted line to represent when the thread gets created and removed.
+  * Gate indicates the start of the process
+  * Indicates listener that instanciates instance on the right: solid lines to ensure synchronous messaging (return call OK)
