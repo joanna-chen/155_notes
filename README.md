@@ -10,8 +10,10 @@
 | OOD            | OOD            |
 
 ## java 101
-| data type      | size           |
+| data type      | size/behaviour |
 | :------------- | :------------- |
+| boolean        | T/F            |
+| char           | 'a'            |
 | byte           | 8-bit          |
 | short          | 16-bit         |
 | int            | 32-bit         |
@@ -34,7 +36,13 @@ int[] numbers = new int[10];
 * computers are discrete-time and digital
   * so report discrete values at given times from the sensors
 * **analog-to-digital-converter (ADC)**: part of the codec; coverts continuous-time analog signal to discrete-time digital signal
-* **actuators**: convert output from computer system into some effect on environment
+* **actuators**: convert output from computer system into some effect on environment (Digitial to Analog Converter)
+
+### Project Management Terminology
+* Functional Requirements: "What the software should do"
+* Non-Functional Requirement: "How the software should feel like"
+* Constraints: "Without this, software projet would FAIL"
+* Specifications: "How do to do" (underlying engineering tehcnical details for requirements and constraints
 
 # lec 3
 
@@ -180,7 +188,7 @@ public class CopyFile {
 * ```FileReader``` and ```FileWriter``` are grouped under data type *file*
 
 ```java
-File file = new File(getDefaultFileDir(FOLDER_NAME));
+File file = new File(getDefaultFileDir(FOLDER_NAME), FILE_NAME);
 PrintWriter pwr = new PrintWriter(file);
 ```
 
@@ -200,8 +208,26 @@ PrintWriter pwr = new PrintWriter(file);
 * used by embedded hardware and software designers
 * generated from functional description of system
 * used as reference to create software/hardware version of FSM implementation
+* has following components:
+
+### structure of State Box:
+| State Name |
+| :-------: |
+| Activities ( do/ _activity_ )|
+
+### Start Point:
+* indicates initial state of FSM and prepaartion actions to set up initial state
+
+### State Transition:
+> Event [Guard] / Actions
+* Event: event that triggers state transition
+* Guard: condition that allows for state transition after event occurs
+* Action `do/ or /`: actions taken after state transition to prepare for next state
 
 *look at slides from lec5 for more UML stuff*
+
+## Superstate: Abstract encompassent of part of FSM states as one generalized state
+* simplifies complex diagrams
 
 # lec 6: polling, interrupt, timers
 
@@ -263,6 +289,20 @@ PrintWriter pwr = new PrintWriter(file);
 * watchdog timer: system deadlock prevention before TCT that could crash
   * *one-shot timer* with duration longer than estimated max process time of TCT so that if TCT completes before timer, TCT probably got stuck
   * TimerExpire event >> TimerHandler >> TCT forced to terminate in the Handler
+  
+### Example:
+```
+Timer timer = new Timer();
+TimerTask tast = new TimerTask() {
+ @Override
+ public void run() {
+  System.out.println("hello world");
+ }
+}
+
+// schedule(task, delay, period);
+timer.schedule(task, 500, 500);
+```
 
 # lec 7: android, xml, version control
 
@@ -293,6 +333,17 @@ PrintWriter pwr = new PrintWriter(file);
 * *bundle* is a key-value map
 * *onSaveInstanceState()* is a method in AppCompatActivity class
 * use ```putString(String key, String value)```
+```java
+class MainActivity ... {
+ String color;
+ 
+ @Override
+ potected void onSaveInstanceState(Bundle b) {
+  super.onSaveInstanceState(b);
+  b.putString("color", color);
+ }
+}
+```
 * to get data:
 ```java
 protected void onCreate(Bundle savedInstanceState) {
@@ -355,3 +406,140 @@ stuff
 * ```super```: reference instance of super-class
 * ```super()```: calls constructor of super-class
 * ```this```: reference instance of the child-class
+
+## Concept Review: OOD
+### Class Comparison
+|        | Concrete Class | Abstract Class      | Interface                        |
+|:-------|:---------------|:--------------------|:---------------------------------|
+| Fields | No restriction | Public or protected | Public default, Constant default |
+| Methods| must be implemented | unimplemented are abstract | signature only |
+| Declaration | `class` | `abstract class` | `interface` |
+|Instantiability| Y | N | N |
+|Inheritance | extends | extends | implements |
+|multiple inheritance| N | N | Y |
+|other | has constructors and destructors | can contain all concrete methods; no constructor | no scpoe modifier; uniqueness modifier required|
+
+### Modifiers
+| Modifier | Interface | Class | Nested Class | Field | Method |
+|:---------|-----------|-------|--------------|-------|--------|
+| public   | Accessible from any class                         |
+| private  | Accessible only from the `this`                   |
+| protected| Accessible from within package (`this` and subclasses) |
+| none     | Accessible from any class within same package (BAD)|
+| abstract | N/A       | Contains at least one abstract method, no instantiation | N/A | implementation not defined, only signature and return type declared |
+| final    | N/A       | Cannot be subclassed | Value cannot change | Cannot be overridden |
+| static   | N/A       | N/A   | Not inner class | Exactly one instance for all objects | Exactly one instance for all objects |
+
+# Post-midterm lectures
+
+## Testing:
+### Testing Levels:
+   1. smoke test
+     * adding code until it fails
+   2. integration test
+     * testing the entire thing
+   3. System Test
+     * testing entire system
+   4. Stress Test
+     * execute software over extended period of time with long and cyclic test plans
+   5. Regression Test
+     * testing after new updates
+ 
+### unit test:
+* double click class to test and create new test.
+* additional procedure on slides
+
+```java
+class testClass {
+ @Test
+ public void computeTest() throws Exception {
+  assertEquals("Test Case: inputs", expectedOutput, otherClass.testFunction(inputs), 
+ }
+}
+```
+
+#Test Suite Implementation:
+## Test Fixtures (Annotations)
+* `@Before`: Setting up tst configurations before every `@Test`
+* `@After`: Release the resources after every `@Test`
+```java
+public class Test {
+ Test instance;
+ 
+ @Before
+ public void setUp() {
+  System.out.println("Test setup");
+  instance = new Test(1);
+ }
+ 
+ @Test
+ public void testOne() {
+  assertEquals("Case 1, 0", 1, instance.computeTrig(1,0), 0.001);
+ }
+ 
+ @After
+ public void tearDown() {
+  instance.printEndMesssage();
+  instance = null;
+ }
+ 
+ @BeforeTest
+ @AfterTest
+ // static methods before run before and after entire test suite
+ 
+ // expecting exceptions
+ @Test(expected = IllegalArgumentException.class)
+ publlic void test() {
+  // do something
+ }
+}
+```
+```java
+public clss Topic2TestSuite {
+ 
+ @Before
+ public void settingUp() {
+  Topic1Class classUnderTest = new Topic1Class();
+ }
+ 
+ @Test
+ public void normalTest() throws Exception {
+  assertEquals("<Test Name>", expectedOutput, class.functiontoTest(input1, input2), (float) levelOfAccuracy);
+ }
+ 
+ @Test (expected = IllegalArgumentException.class)
+ public void exceptionTestCases() throws Exception {
+  // does not need assertEquals since it expects an exception and will fail if the exception does not throw
+  class.functionToTest(improperInput1, improperInput2);
+ }
+}
+```
+
+# Multithreading and Concurrency:
+## Multithreading:
+* CPU not always executing code; when idling CPU executes *NOP* command
+  * For TCTs, leaves program waits and leaves CPU *NOP*ing for inefficient time
+### Virtual Parallel Tasking: 
+* Maximizing usage of CPU to allow max number of processes / programs to appear to run in parallel
+### Thread Scheduling:
+* Process of allocating CPU processing time to different threads. 
+### Process:
+* executable program
+* memory locations allocated or the program and its needed heap & stack
+### Thread: Sequence of Commands
+* Thread Scheduling: non-preemptive scheduling given 1 CPU core: look at slides
+* Pre-emptive scheduling example:
+  * Given Priority level 1 > 2 > 3
+  * Thread A: Periodic Task with Deadline
+  * Thread B: TCT with long wait time
+  * Thread C: Deadline at 98 ms.
+* eg. File I/O vs. LineGraphView.
+### Time Coallescing
+
+# Sequence Diagrams
+## Multithread System Analysis:
+### Timing Analysis Table:
+* eg. Instance arrangement: Instances on the left invoke instances on the right.
+  * dotted line to represent when the thread gets created and removed.
+  * Gate indicates the start of the process
+  * Indicates listener that instanciates instance on the right: solid lines to ensure synchronous messaging (return call OK)
