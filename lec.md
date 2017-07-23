@@ -355,3 +355,76 @@ stuff
 * ```super```: reference instance of super-class
 * ```super()```: calls constructor of super-class
 * ```this```: reference instance of the child-class
+
+# lec 9: signal analysis
+* **signal cleansing**: remove unwanted noise to keep the main signal
+* **pattern recognition**: using characteristics from cleaned signal to find pattern
+* **low pass filter**: rejects high-frequency signals at input and pass low-frequency signals to output
+* filteredReading += (newReading - filteredReading) / C;
+  * C is the attenuation factor
+
+# lec 10: OOD
+* interface
+* abstract class
+* override and overload
+* polymorphism
+* scope of field
+
+# lec 12: mythical man-month
+
+# lec 13: UML, software testing
+
+## UML class diagram
+* types: structural (class diagram), behavioral (state diagram), interaction (sequence)
+* look at slides
+
+## software testing
+* **functional verification**: every stage of software development
+* **result verification**: every debug attempt
+* **integrity verification (regression test)**: after every software update
+* testing levels:
+  * smoke test: test software after change applied; if fail > revert change
+  * unit test: test on small piece of code (JUnit)
+  * integration test: bring modules together to test combined behavior
+  * system test: test entire system
+  * stress test: execute over period of time with long and cyclic test plans
+  * regression test: previously fixed bugs should stay fixed
+
+## JUnit
+* three core elements in JUnit test:
+  1. module (code) under test
+  2. test file (test case class)
+  3. test runner class
+* assertion: `asserEquals()`
+
+# lec 14: more software testing
+* 3 types of code coverage:
+  * **line coverage**: a line is covered when it's tested by test cases
+  * **branch coverage**: condition branch is covered
+  * **multiple condition coverage**: module with multiple conditions is covered
+
+# lec 15: debugging
+* bug localization: estimate location of bug based on the nature of the unexpected output
+
+## debugging tactics
+* code instrumentation: printing out the intermediate steps
+* single-step execution (hardcore debugging)
+  * use a *breakpoint*
+* breakpoints:
+  * **line breakpoint**: start single step at this line
+  * **method breakpoint**: start when the method is invoked
+  * **exception breakpoint**: when the Exception is thrown, start single step
+  * **watchpoint**: start single step when the field is changed
+* step over, step into, step out, resume, rerun, stop
+
+## types of bugs
+* **common bug**: basic; semantic with 100% predictable output
+* **sporadic bug**: second basic; only occurs in edge cases
+* **Heisenbug**: the hard bug (eg. race condition, memory errors, optimizations)
+* **bugs hiding behind bugs**
+* **secret bugs**: do not have full access to bug report (possibly from company confidentiality)
+* **configuration bug**: need to properly configure runtime environment
+* **hardware bug**
+* **not-a-bug**
+
+# lec 16: multithreading & concurrency management
