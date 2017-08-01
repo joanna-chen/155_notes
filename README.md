@@ -1,3 +1,22 @@
+# Table of Contents:
+* [Java 101](#java-101)
+* [embedded systems](#embedded-systems)
+* [project management](#project-management-terminology)
+* [Exceptions](#exceptions)
+* [IO](#read-and-write)
+* [FSM and UML](#uml-state-diagram)
+* [Events and Handlers](#events-and-handlers)
+* [android and bundle](#android-application-structure)
+* [OOD](#advantages)
+* [Testing](#testing)
+* [Multithreading and Concurrency](#multithreading)
+* [More Multithreading](https://github.com/suzyng83209/155_notes/blob/master/Lecture%2016%20-%20Multithreading%20and%20Concurrency.md)
+* [Sequence Diagrams](#sequence-diagrams)
+* [Refactoring](https://github.com/suzyng83209/155_notes/blob/master/Lecture%2018%20-%20Refactoring.md)
+* [Road to Production](https://github.com/suzyng83209/155_notes/blob/master/Lecture%2018%20-%20Road%20to%20Production.md)
+* [Advanced FSM Stuff](https://github.com/suzyng83209/155_notes/blob/master/Lecture%2020%20-%20Advanced%20FSM%20Application.md)
+* [Final Review stuff](finalReview.md)
+
 # lec 1+2
 
 ## c++ vs. java
