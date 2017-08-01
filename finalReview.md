@@ -78,11 +78,13 @@ protected void onCreate(Bundle b) {
 
 ## Timers
 
+### How they work
 * When you schedule a TimerTask, the TimerTask is the event handler for a TimerElapsed event that procs after the timeout you set
 * Scheduled timers run in parallel with other timers and the main method
 * Watchdog timer
  * Timer that is used to make sure a task that can potentially timeout (fetching something from the internet, connecting to another device wirelessly, etc) doesn't continue retrying forever and stall out the system
-* Timer Coalescing
+ 
+### Timer Coalescing
  * In a system without timer coalescing, timeouts fire at pretty evenly distributed times
  ![neener neener](https://cdn.arstechnica.net/wp-content/uploads/2013/06/coalesced_before.png)
  * This means that the CPU has to constantly be using power, leading to lots of idle time or generally inefficient CPU use
@@ -90,3 +92,42 @@ protected void onCreate(Bundle b) {
  ![neener neeeeener](https://cdn.arstechnica.net/wp-content/uploads/2013/06/coalesced-after.png)
  * Good for power efficiency
  
+## OOD design
+
+### Class Comparison
+|        | Concrete Class | Abstract Class      | Interface                        |
+|:-------|:---------------|:--------------------|:---------------------------------|
+| Fields | No restriction | Public or protected | Public default, Constant default |
+| Methods| must be implemented | unimplemented are abstract | signature only |
+| Declaration | `class` | `abstract class` | `interface` |
+|Instantiability| Y | N | N |
+|Inheritance | extends | extends | implements |
+|multiple inheritance| N | N | Y |
+|other | has constructors and destructors | can contain all concrete methods; no constructor | no scpoe modifier; uniqueness modifier required|
+
+### Modifiers
+| Modifier | Interface | Class | Nested Class | Field | Method |
+|:---------|-----------|-------|--------------|-------|--------|
+| public   | Accessible from any class                         |
+| private  | Accessible only from the `this`                   |
+| protected| Accessible from within package (`this` and subclasses) |
+| none     | Accessible from any class within same package (BAD)|
+| abstract | N/A       | Contains at least one abstract method, no instantiation | N/A | implementation not defined, only signature and return type declared |
+| final    | N/A       | Cannot be subclassed | Value cannot change | Cannot be overridden |
+| static   | N/A       | N/A   | Not inner class | Exactly one instance for all objects | Exactly one instance for all objects |
+
+  
+### UML diagrams
+  
+* basic class block
+  * 3 rows:
+    1. class name (bold)
+    2. attributes/fields : data type
+    3. operations (constructors, methods, etc) : return type
+  * visibility modifier (put in front of field/method): public (+), private (-), protected (#)
+  * uniqueness modifier: static (underline), final (capitalization)
+  * destructor/package (~)
+  * range of values (..)
+  * separator of items in set (,)
+  * *in* in front of input parameters
+  * *out* in front of output parameters
