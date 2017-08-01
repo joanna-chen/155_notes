@@ -131,3 +131,46 @@ protected void onCreate(Bundle b) {
   * separator of items in set (,)
   * *in* in front of input parameters
   * *out* in front of output parameters
+
+## Multithreading analysis
+
+### Why multithread?
+  * Takes advantage of time when CPU would otherwise be idling
+  * Allows programs to run in parallel with each other
+  
+### Threads and processes
+  * Thread: a sequence of commands
+    * faster to create and destroy than processes
+    * threads within the same process have access to the same memory and files, and can communicate with each other
+  * Process: a bunch of threads (at least one)
+    * eg. An android app is a process that has a MainActivity thread and a UI Thread.
+  * If any thread encounters an error, its entire process halts
+  * Independent processes can continue if another one stops
+
+### Thread Scheduling
+  * **Threads have baggage**
+    * required execution time
+    * execution deadlines
+    * required data (may come from other threads)
+  * Threads have states:
+    * Executing
+    * Ready: all required data is ready, just waiting for a processor to occupy
+    * Blocked: some needed resources are not yet ready
+  * **Different Multithreading Strategies:**
+    * Co-operative Multithreading
+      * Each thread controls when it yields the CPU it occupies
+      * Good for embedded systems that do not anage threads
+      * Can be very efficient if every thread yields efficiently
+      * Problem: **Greedy Threads** that never yield
+    * Pre-emptive Multithreading
+      * OS has the power to force threads to switch or yield CPU
+      * Problem: if the OS's decisions are not efficient, then the system will have poor performance
+  * Threads and deadlines
+    * Hard deadlines: timely completion is extremely important
+      * these tasks have higher priorities
+    * Soft deadlines: occaisional delay is undesirable but tolerable
+  * Race Conditions
+    * Consider 2 seperate threads that act on the same data
+    * If the threads are run at the same time, a race condition occurs
+    * It's uncertain what the data will be after running the threads
+    
