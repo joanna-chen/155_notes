@@ -47,6 +47,12 @@
 
 ## Android development
 
+* Android application structure
+
+* **activity**: full-screen window that users can interact with
+* **widgets (views)**: interactive items that allow for user interactions
+* **task (activity call stack)**: android OS has a task stack (prevents disruption to functional dependency)
+
 * Bundle
   * Bundle is a key-value map used to restore information when the app is closed/inactive
   * onSaveInstanceState is called in onDestroy() right before the activity is destroyed
@@ -69,3 +75,18 @@ protected void onCreate(Bundle b) {
   }
 }
 ```
+
+## Timers
+
+* When you schedule a TimerTask, the TimerTask is the event handler for a TimerElapsed event that procs after the timeout you set
+* Scheduled timers run in parallel with other timers and the main method
+* Watchdog timer
+ * Timer that is used to make sure a task that can potentially timeout (fetching something from the internet, connecting to another device wirelessly, etc) doesn't continue retrying forever and stall out the system
+* Timer Coalescing
+ * In a system without timer coalescing, timeouts fire at pretty evenly distributed times
+ ![neener neener](https://cdn.arstechnica.net/wp-content/uploads/2013/06/coalesced_before.png)
+ * This means that the CPU has to constantly be using power, leading to lots of idle time or generally inefficient CPU use
+ * Timer coalescing groups up and timeout events that are close to each other, meaning that the CPU works in short bursts of high activity instead of constant light use
+ ![neener neeeeener](https://cdn.arstechnica.net/wp-content/uploads/2013/06/coalesced-after.png)
+ * Good for power efficiency
+ 
