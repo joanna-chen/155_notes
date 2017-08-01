@@ -458,7 +458,13 @@ class testClass {
 }
 ```
 
-#Test Suite Implementation:
+| Black Box Testing | White Box Testing |
+| ----------------- | ----------------- |
+| Takes external perspective when developing test cases. | Takes internal perspective based on internal code structure |
+| Functional/Non-functional tests. | Requies programming skills |
+| Designer selects valid and invalid inputs and determines correct outputs | Designer chooses test case inputs to have 100% test case coverage and determines correct output |
+
+# Test Suite Implementation:
 ## Test Fixtures (Annotations)
 * `@Before`: Setting up tst configurations before every `@Test`
 * `@After`: Release the resources after every `@Test`
