@@ -428,3 +428,117 @@ stuff
 * **not-a-bug**
 
 # lec 16: multithreading & concurrency management
+* processes vs. threads
+  * threads faster to create/destroy than processes
+  * less time to switch between threads in same process
+  * threads in same process share memory/files
+* **time division/time slicing**: threads take turns sharing the CPU resource (perceived as threads executing in parallel)
+* **thread states**:
+  1. executing: thread occupies one CPU and command sequence is executing
+  2. ready: thread has assess to all needed resources, waiting to occupy CPU
+  3. blocked: thread does not have all needed resources, blocked from command execution on CPU
+* **cooperative multithreading**: each thread yields CPU proactively when appropriate
+  * for embedded systems that do not manage threads
+  * could be very efficient
+  * problem: *greedy threads*
+* **pre-emptive multithreading**: OS forces thread to switch when it is time
+  * in most standard OSes
+
+## timer coalescing
+* ???
+
+## UML Sequence Diagram
+* "chronological message exchange"
+* *instance*: object in the interaction sequence (ie. thread, process, system)
+  * **instance name**: object type
+* *lifeline*: vertical, dashed, unitless time line
+  * creation and destruction of corresponding instance on lifeline
+* *action box*: on the lifeline of the Life Time of the instance
+  * rectangular box on the lifeline
+
+### messages
+* **synchronous message**: solid arrow-headed line labelled with method call
+  * inquiring instance is blocked, waiting for response of responding instance
+* **asynchronous message**: dotted arrow-headed line labelled with field containing response
+  * inquiring instance does not wait for response of responding instance
+* **message condition**: condition to be met before message can be issued
+  * [Guard] Action
+
+# lec 17:
+
+# lec 18: refactoring
+* process
+  1. create unit test / code instrumentation
+  2. run test
+  3. make refactoring changes
+  4. run test again
+  5. evaluate results
+* **simple techniques**:
+  1. method extraction
+    * repeated code that can be replaced with a method call
+  2. magic number removal
+    * assign magic number to a constant field
+  3. variable naming
+    * rename
+  4. method naming
+    * rename
+* **OOD techniques**:
+  1. encapsulating fields
+    * make inappropriate public fields private or protected
+    * getter-setter methods
+  2. generalize types
+    * create superclass (concrete or abstract) and move repeated content
+  3. extract method / class
+    * create new method / class that should be logically isolated
+  4. inline method / class
+    * combine two methods / classes that should be merged
+  5. move / pull-up / push-down fields & methods
+    * pull-up : if used in most subclasses, move to superclass
+    * pull-down : if used in few subclasses, move to subclasses
+  6. replace conditionals with polymorphism
+* **antipatterns**:
+  1. the blob
+    * one class with too much logic --> extract methods / classes
+  2. lava flow
+    * old useless code left behind --> delete it
+  3. functional decomposition
+    * coding style like structural / sequential languages when OOP
+  4. copy-and-paste programming
+    * copied code segments --> extract methods / classes
+  5. poltergeists
+    * inline poltergeist methods / classes (exist but don't do much)
+  6. golden hammer
+    * class designed to handle every possible event --> extract classes and specialize them
+  7. exceptions as control flows
+    * try-catch to catch expected Exception --> use if-else
+  8. spaghetti code
+    * no structure, small # of objects with long methods --> extract and restructure
+
+## road to production
+* **verification & validation**
+  * build the thing right (meet requirements through testing and static analysis)
+  * build the right thing (check design against customer's needs through beta testing)
+* **software maintenance**: rewrite vs. patching
+  * types of maintenance: corrective, adaptive, perfective, preventive
+* **software licensing**: legal instrument describing how piece of software can be used / distributed
+  1. proprietary license (copyright): strictest software license, impossible to generalize
+  2. general public license (copy-left): mandatory non-profit software modules
+  3. Berkeley software distribution (BSD): disclaims all liabilities
+  4. Mozilla public license (MPL, hybrid): open-source license, allow source code to be mixed
+  5. public domain (license-free): no copyright owner
+
+# lec 19: advanced OOD
+* **parametric object selection**: invoke method from object without knowing specific instance
+* **linked list of generic types**:
+* have a linked list of all the object instances and just invoke that method that is overriden in each subclass
+* listener interface allows the correct methods to be implemented in all Listeners
+
+# lec 20: advanced FSM
+* **Manchester coding scheme**: used in Wired Network Communication for Noise Tolerance
+  * G.E. Thomas Scheme
+    * data 0, network 0-1 (rising)
+    * data 1, network 1-0 (falling)
+  * IEEE 802.3 Scheme
+    * data 0, network 1-0 (falling)
+    * data 1, network 0-1 (rising)
+* decoder design: implement in code
