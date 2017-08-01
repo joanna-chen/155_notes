@@ -218,7 +218,7 @@ protected void onCreate(Bundle b) {
   * `@Before` this function runs before every test function
   * `@After` `-_-`
   * `@BeforeClass` runs before the test class
-  * `@AfterClass` `-_-`
+  * `@AfterClass` used to dispose of the test class
   
 ### Test case design
   * Normal use cases
@@ -268,4 +268,76 @@ synchronized(s){
   * comment with care
     * explain **purpose** clearly (not just what you're doing, but **why** you're doing it) and make sure outdated comments don't stay in code
     * or write code that is self-documenting
+    
+## Refactoring
+
+### Property 1: Local - not affecting unrelated parts of program
+### Property 2: Sematic-Preserving - code maintains identical behaviour
+
+### General Refactoring Process
+  1. Create Unit Test / Code Instrumentation
+  2. Run Test
+  3. Make Changes
+  4. Run Test
+  5. Evaluate Results
   
+### Simple refactoring techniques
+  * **Field/Method renaming:** rename fields and methods that have bad names
+  * **Method extraction:** finding repeated sections of code and replacing them with a method call
+  * **Magic numbers:** remove random numbers in code, replacing them with constants (fields declared final)
+  
+### OOD Refactoring Techniques
+  * **Encapsulation:** making fields/methods private or public as necessary, hiding information from the rest of the program
+  * **Generalizing Types:** making classes that have similar properties use inheritance instead of being seperate and bad
+  * **Method/Class Extraction:** if a method/class behaves logically different in 2 different use cases, split it into a seperate method/class
+  * **Inline Method/Class:** combining logically similar methods/classes into a single method/class
+  * **Pull-up/Push-down:** moving methods from superclass to subclass or the other way around depending on how often they are used in each case
+  * **Polymorphism:** replace conditions with polymorphism. pretty gud
+  
+### Antipatterns
+Code stye that promotes mistakes
+
+1. The Blob
+   * Too much logic in one class; keeps expanding.
+   * Should extract methods
+   
+2. Lava Flow
+   * old code segments that may or may not break the program if removed carelessly
+   * code review and maintenance and deletion
+   
+3. Functional Decomposition
+   * coding style resembles sequential languages when OOP (when non-OOD programmers write in OOD languages)
+   * Exctract and pull-up
+   
+4. Copy-and-Paste
+   * repeated code that is slightly modified
+   * extract to own method and replace copied segments
+   
+5. Poltergeists
+   * class with limited roles and short lifecycle - Waste of system resources
+   * inline methods / class
+   
+6. Golden Hammer
+   * Class designed to handle every possible event in program
+   * extract and specialize classes
+   
+7. Expections as Control Flow
+   * using try-catch block to handle expected Exceptions
+      ```java
+      try {
+        instance1.method();
+      } catch (NullPointerException) {
+        System.out.println("instance is empty");
+      }
+      ```
+   * replace with if-else
+      ```java
+      if (instance1 != null {
+        instance1.method();
+      } else {
+         System.out.println("instance is empty");
+      }
+      ```
+8. Spaghetti Code
+   * code with no structure suh as small number of objects with long methods
+   * extract methods and restructure
