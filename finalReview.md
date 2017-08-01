@@ -32,25 +32,25 @@
 ## Event-driven programming
 
 * Event-Handler Relationship:
-** sensor > event manager > handler > actuator
-** Inversion of control: the system/users/environments decides what happens, not the program
+  * sensor > event manager > handler > actuator
+  * Inversion of control: the system/users/environments decides what happens, not the program
 
 * Polling vs interrupt
-** Polling: periodically watches a parameter
-** Interrupt: raises attention when parameter is confirmed to be changed
+  * Polling: periodically watches a parameter
+  * Interrupt: raises attention when parameter is confirmed to be changed
 
 * Try-Catch-Finally block
-** Executes the code that comes after the try block
-** If an exception is thrown, handle it in the Catch block
-** Finally block always runs after everything is finished
-*** Don't use this for control flow
+  * Executes the code that comes after the try block
+  * If an exception is thrown, handle it in the Catch block
+  * Finally block always runs after everything is finished
+  * Don't use this for control flow
 
 ## Android development
 
 * Bundle
-** Bundle is a key-value map used to restore information when the app is closed/inactive
-** onSaveInstanceState is called in onDestroy() right before the activity is destroyed
-** This code saves "blue" to the key "color"
+  * Bundle is a key-value map used to restore information when the app is closed/inactive
+  * onSaveInstanceState is called in onDestroy() right before the activity is destroyed
+  * This code saves "blue" to the key "color"
 ```java
 class MainActivity ... {
 
@@ -61,7 +61,7 @@ class MainActivity ... {
  }
 }
 ```
-** This code gets the stored data from the bundle when the activity is created
+  * This code gets the stored data from the bundle when the activity is created
 ```java
 protected void onCreate(Bundle b) {
   if (b != null) {
