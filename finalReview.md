@@ -227,4 +227,45 @@ protected void onCreate(Bundle b) {
   
 ### Coverage analysis
   * if a line of code is run in a test suite then its covered, otherwise not
-  * 
+  
+## Debugging
+### Types of bugs
+  * Common bug
+    * semantic mistake in code that causes 100% predictable (wrong) output
+  * Sporadic bug
+    * bug that only occurs under certain cases (normally boundary/edge conditions)
+  * Heisenbug
+    * very pain in the ass
+    * difficult to isolate and happens inconsistently
+    * commonly caused by race conditions, memory leaks, or optimization faults
+    * if caused by simultaneous field access:
+      * use **sychronize** to prevent variable conflicts
+      * in the following example, the variable `s` is locked until execution finishes
+```java
+synchronized(s){
+  s.count++;
+  p.setResult(s);
+}
+```
+      * make the field local instead of global/static whenever possible
+  * Bugs hiding behind other bugs
+    * multiple bugs interacting with each other
+    * this happens when you try to implement too much code at once between testing
+  * Secret bugs
+    * you don't have access to the bug report due to some kind of reason
+      * eg. company confidentiality or black box program
+  * Configuration bug
+    * an issue with the runtime environment instead of the actual code
+    * eg. insufficient file access privelege
+  * Hardware bug
+    * not your problem
+  * Not-a-bug
+    * the program is doing something semantically correct based on the specifications
+    * it's a problem for the project manager, not the programmer
+### Debuggable coding style
+  * don't make your code too clever
+  * name variables in a useful way
+  * comment with care
+    * explain **purpose** clearly (not just what you're doing, but **why** you're doing it) and make sure outdated comments don't stay in code
+    * or write code that is self-documenting
+  
