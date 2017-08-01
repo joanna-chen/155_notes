@@ -23,3 +23,14 @@ This is timed with Data Clock ticking at the centre of the NRZ bit. NRZ clock 2x
 * FSM is triggered at Network Clock Speed
 
 ### Example:
+![Manchester Decoder Example](https://github.com/suzyng83209/155_notes/blob/master/manchester%20decoder%20FSM.PNG)
+
+```java
+
+public void myManchesterDecoder(int networkInput) {...}
+// networkInput contains 0 for LOW netwrk signal, 1 for HIGH
+
+// output decoded signal:
+public static void otuputData(int dataOutput) {...}
+// Pass 0 to dataOutpt for logic LOW, 1 for logic HIGH
+```
