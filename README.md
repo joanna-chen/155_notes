@@ -466,7 +466,7 @@ class testClass {
 
 # Test Suite Implementation:
 ## Test Fixtures (Annotations)
-* `@Before`: Setting up tst configurations before every `@Test`
+* `@Before`: Setting up test configurations before every `@Test`
 * `@After`: Release the resources after every `@Test`
 ```java
 public class Test {
@@ -489,8 +489,8 @@ public class Test {
   instance = null;
  }
  
- @BeforeTest
- @AfterTest
+ @BeforeClass
+ @AfterClass
  // static methods before run before and after entire test suite
  
  // expecting exceptions
