@@ -119,7 +119,7 @@ protected void onCreate(Bundle b) {
   
 ### UML diagrams
   
-* basic class block
+* Basic class block
   * 3 rows:
     1. class name (bold)
     2. attributes/fields : data type
@@ -131,6 +131,29 @@ protected void onCreate(Bundle b) {
   * separator of items in set (,)
   * *in* in front of input parameters
   * *out* in front of output parameters
+
+* UML Sequence diagrams
+  * Gate: the starting point
+    * fliled circle on the leftmost verge of the diagram
+  * Instance: the objects involved in the sequence
+    * can be thread, process, or system
+    * box labelled with `{instance name}: {object type}`
+  * Lifeline: vertical, dashed, unitless time line
+    * creation and destruction of respective instances are drawn on the lifeline
+  * Messages:
+    * synchronous messages:
+      * solid arrow head line labelled with the method call
+      * drawn from the inquiring instance to the responding instance
+      * inquiring instance is blocked and waits for the response
+    * asynchronous messages:
+      * response from a synchronous message
+      * dotted arrow head line labelled with the field containing the response
+      * the inquiring instance does **not** wait for the responding instance before continuing
+    * message conditions
+      * `[Guard] Action` format
+      * condition to be met before the message can be issued
+      
+![](http://i.imgur.com/kxhug74.png)
 
 ## Multithreading analysis
 
@@ -174,3 +197,34 @@ protected void onCreate(Bundle b) {
     * If the threads are run at the same time, a race condition occurs
     * It's uncertain what the data will be after running the threads
     
+## Software Testing
+### Testing Levels:
+  * **Smoke test:** adding code until it fails
+  * **Unit test:** tests carried out on a small piece of code, testing only that piece of the software
+    * **NO STATE DEPENDENCY**
+    * can target algorithm bugs
+  * **Integration test:** bringing multiple modules together and testing their combined behaviour
+    * can target module incompatibility and heisenbugs
+  * **System Test:** testing the entire system
+    * can target unexpected system behavioural bugs
+  * **Stress test**: testing software over an extended period of time with long, cyclic test plans
+    * can target time-dependent bugs that wouldn't show up otherwise eg. memory leak
+  * **Regression test:** testing that new updates to software do not break features that used to work
+  
+### JUnit stuff
+  * assertEquals(String message, double expectedOutput, double actualOutput, double toleranceLevel)
+  * `@Test` marks a test function
+  * `@Test (expected = {exception class})` marks a test function that expects a thrown exception
+  * `@Before` this function runs before every test function
+  * `@After` `-_-`
+  * `@BeforeClass` runs before the test class
+  * `@AfterClass` `-_-`
+  
+### Test case design
+  * Normal use cases
+  * Edge/corner/boundary cases
+  * Exception cases
+  
+### Coverage analysis
+  * if a line of code is run in a test suite then its covered, otherwise not
+  * 
