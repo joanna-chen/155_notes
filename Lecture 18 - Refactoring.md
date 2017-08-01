@@ -102,3 +102,22 @@ Code stye that promotes mistakes
    * code with no structure suh as small number of objects with long methods
    * extract methods and restructure
 
+# Parametric Polymorphism
+
+### Parametric Object Selection:
+invokes methods from objects without knowing specific instance of object
+
+### Linked List of General Types:
+```java
+LinkedList<ClassA> myList = new LinkedList<ClassA>();
+
+myList.add(new ClassA1());
+myList.add(new ClassA2());
+
+for (classA myA : myList) {
+  System.out.println("Result: " + myA.methodA(100));
+}
+```
+
+* invokeing subtype-specific metods without going through explicit selection process
+* simple point of control; single point of feature expansion
