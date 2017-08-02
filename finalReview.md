@@ -112,8 +112,8 @@ protected void onCreate(Bundle b) {
 | private  | Accessible only from the `this`                   |
 | protected| Accessible from within package (`this` and subclasses) |
 | none     | Accessible from any class within same package (BAD)|
-| abstract | N/A       | Contains at least one abstract method, no instantiation | N/A | implementation not defined, only signature and return type declared |
-| final    | N/A       | Cannot be subclassed | Value cannot change | Cannot be overridden |
+| abstract | N/A       | Contains at least one abstract method, no instantiation | N/A | N/A | implementation not defined, only signature and return type declared |
+| final    | N/A       | Cannot be subclassed | N/A | Value cannot change | Cannot be overridden |
 | static   | N/A       | N/A   | Not inner class | Exactly one instance for all objects | Exactly one instance for all objects |
 
   
